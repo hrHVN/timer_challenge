@@ -18,28 +18,21 @@ const timer = {
     },
     // Counter, counts down the spesifyed amount of seconds
     countdown: function (setT) {
-        const now = new Date('December 31, 1975, 23:15:30 GMT+07:00');
-        let startVal = new Date('December 31, 1975, 23:15:30 GMT+07:00');
-        now.setSeconds(setT);
-        console.log(startVal)
-        console.log(now)
-
-        let display;
-
         count = setInterval(function () {
-            // if ((startVal.getMinutes() == now.getMinutes) && (startVal.getSeconds() == now.getSeconds)) {
             if ((setT < 0)) {
                 clearInterval(count);
                 return;
             }
-            display = `${parseInt(setT / 60)}:${parseInt(setT)}`;
-            // $('.display__time-left').html(startVal.setSeconds(startVal.getSeconds() +1));
+            d = Number(setT);
+            var h = Math.floor(d / 3600);
+            var m = Math.floor(d % 3600 / 60);
+            var s = Math.floor(d % 3600 % 60);
             setT--;
-            $('.display__time-left').html(display);
+            $('.display__time-left').html(`${m}:${s}`);
         }, 1000);
     },
     // Displays the clock at wich the timer finishes
-    endTime: function(setT) {
+    endTime: function (setT) {
         const now = new Date('December 31, 1975, 23:15:30 GMT+07:00');
         now.setSeconds(setT);
 
