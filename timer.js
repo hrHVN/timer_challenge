@@ -24,22 +24,25 @@ const timer = {
         console.log(startVal)
         console.log(now)
 
+        let display;
+
         count = setInterval(function () {
             // if ((startVal.getMinutes() == now.getMinutes) && (startVal.getSeconds() == now.getSeconds)) {
             if ((setT < 0)) {
                 clearInterval(count);
                 return;
             }
-
+            display = `${parseInt(setT / 60)}:${parseInt(setT)}`;
             // $('.display__time-left').html(startVal.setSeconds(startVal.getSeconds() +1));
-            $('.display__time-left').html(setT--);
+            setT--;
+            $('.display__time-left').html(display);
         }, 1000);
     },
     // Displays the clock at wich the timer finishes
     endTime: function(setT) {
         const now = new Date('December 31, 1975, 23:15:30 GMT+07:00');
         now.setSeconds(setT);
-                    
+
         let end = `${now.getMinutes}:${now.getSeconds}`;
         $('.display__end-time').html(`${now.getUTCHours()}:${now.getUTCMinutes()}:${now.getUTCSeconds()}`);
     }
