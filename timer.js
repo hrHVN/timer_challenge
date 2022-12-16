@@ -5,6 +5,7 @@
 //  a user can enter minutes.A separate timer.js file should be created for all the functions.
 
 const timer = {
+    // Eventlistener
     button: function () {
         $('button').click(function () {
             let btn = $(this).data('time');
@@ -15,6 +16,7 @@ const timer = {
             timer.endTime(btn);
         })
     },
+    // Counter, counts down the spesifyed amount of seconds
     countdown: function (setT) {
         const now = new Date('December 31, 1975, 23:15:30 GMT+07:00');
         let startVal = new Date('December 31, 1975, 23:15:30 GMT+07:00');
@@ -33,6 +35,7 @@ const timer = {
             $('.display__time-left').html(setT--);
         }, 1000);
     },
+    // Displays the clock at wich the timer finishes
     endTime: function(setT) {
         const now = new Date('December 31, 1975, 23:15:30 GMT+07:00');
         now.setSeconds(setT);
