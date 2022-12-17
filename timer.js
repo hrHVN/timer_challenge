@@ -11,10 +11,22 @@ const timer = {
             let btn = $(this).data('time');
             console.log(btn);
 
-            // clearInterval(timer.countdown(-1));
             timer.countdown(btn);
             timer.endTime(btn);
         })
+    },
+    // Eventlistner for Typed-Input field
+    typed: function() {
+        $('input[type="text"]').change(function() {
+            let txt = $(this).val();
+            timer.countdown(txt);
+            timer.endTime(txt);
+        });
+
+        // $('custom').submit(function () { 
+        //     timer.countdown($(this).val())            
+        // });
+
     },
     // Counter, counts down the spesifyed amount of seconds
     countdown: function (setT) {
@@ -28,10 +40,13 @@ const timer = {
             var m = Math.floor(d % 3600 / 60);
             var s = Math.floor(d % 3600 % 60);
             setT--;
+            if (setT > 3600) {
+            $('.display__time-left').html(`${h}:${m}:${s}`);
+            }
             $('.display__time-left').html(`${m}:${s}`);
         }, 1000);
     },
-    // Displays the clock at wich the timer finishes
+    // Displays the clokc-time at wich the timer finishes
     endTime: function (setT) {
         const now = new Date('December 31, 1975, 23:15:30 GMT+07:00');
         now.setSeconds(setT);
@@ -43,4 +58,5 @@ const timer = {
 
 $(document).ready(function () {
     timer.button();
+    timer.typed();
 })
